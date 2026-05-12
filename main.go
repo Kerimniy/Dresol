@@ -37,7 +37,7 @@ type DNSRequest struct {
 }
 
 func main() {
-
+/*
 	file, f_err := os.Open("SECRET_KEY")
 	if f_err != nil {
 		_, e := rand.Read(SECRET_KEY)
@@ -59,7 +59,7 @@ func main() {
 
 		}
 	}
-
+*/
 	var host = read_file_as_str("HOST")
 
 	if host == "" {
@@ -73,7 +73,7 @@ func main() {
 
 	s = securecookie.New(SECRET_KEY, nil)
 
-	file.Close()
+	// file.Close()
 
 	http.HandleFunc("/", index)
 	http.Handle("/resolve/", rateLimiter(http.HandlerFunc(resolve_handle)))
