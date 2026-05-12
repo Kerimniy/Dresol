@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/rand"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -37,29 +36,29 @@ type DNSRequest struct {
 }
 
 func main() {
-/*
-	file, f_err := os.Open("SECRET_KEY")
-	if f_err != nil {
-		_, e := rand.Read(SECRET_KEY)
-		f, err := os.Create("SECRET_KEY")
-		_, e1 := f.Write(SECRET_KEY)
-		if e != nil || err != nil || e1 != nil {
-			log.Fatal(e, err, e1)
-		}
-
-	} else {
-		_, err2 := file.Read(SECRET_KEY)
-		if err2 != nil {
+	/*
+		file, f_err := os.Open("SECRET_KEY")
+		if f_err != nil {
 			_, e := rand.Read(SECRET_KEY)
-			f, err := os.Create("data/SECRET_KEY")
+			f, err := os.Create("SECRET_KEY")
 			_, e1 := f.Write(SECRET_KEY)
 			if e != nil || err != nil || e1 != nil {
-				log.Fatal(e)
+				log.Fatal(e, err, e1)
 			}
 
+		} else {
+			_, err2 := file.Read(SECRET_KEY)
+			if err2 != nil {
+				_, e := rand.Read(SECRET_KEY)
+				f, err := os.Create("data/SECRET_KEY")
+				_, e1 := f.Write(SECRET_KEY)
+				if e != nil || err != nil || e1 != nil {
+					log.Fatal(e)
+				}
+
+			}
 		}
-	}
-*/
+	*/
 	var host = read_file_as_str("HOST")
 
 	if host == "" {
