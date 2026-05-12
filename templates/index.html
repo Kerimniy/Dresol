@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>DNS lokup online</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/static/icons/favicon.png">
+<meta name="robots" content="noindex">
+
+<link rel="stylesheet" href="/static/css/main.css">
+
+
+</head>
+
+	<body>
+        <div style="width: 100%; padding: 1rem;; max-width: 700px; justify-content: start; gap: 1rem;">
+
+            <div class="panel">
+                  <div style="flex-direction: row; align-self: start;">
+                    <div style="width: 3.5rem; aspect-ratio: 1/1;">
+                        <img id="main-icon" src="/static/icons/favicon.png" style="height: 100%;">
+                    </div>
+
+                    <h1>Dresol</h1>
+                </div>
+            </div>
+
+            <div class="panel">
+              
+                <div>
+                    <h2>Just a simple DNS resolver without registration</h2>
+                </div>
+
+                <div style="flex-direction: row; width: 100%; gap: 0.75rem;">
+                    <input id="domain" placeholder="www.example.com" type="text">  
+                </div>
+
+                <div><h3></h3></div>
+
+                <div style="display: grid; width: 100%; grid-template-columns: 1fr 2fr; grid-template-rows: 1fr 1fr; gap: 1rem;">
+
+                    <div>
+                        <h3>DNS Record</h3>
+                    </div>
+
+                    <select id="type">
+                        <option>A</option>
+                        <option>AAAA</option>
+                        <option>TXT</option>
+                        <option>CNAME</option>
+                        <option>NS</option>
+                        <option>MX</option>
+                        <option>SOA</option>
+                        <option>SRV</option>
+                        <option>CAA</option>
+                        <option>PTR</option>
+                        <option>HINFO</option>
+                        <option>CERT</option>
+                        <option>DNSKEY</option>
+                        <option>DS</option>
+                        <option>HTTPS</option>
+                        <option>LOC</option>
+                        <option>NAPTR</option>
+                    </select>
+
+                    <div>
+                        <h3>DNS Server</h3>
+                    </div>
+
+                    <select id="server">
+                        <option>GoogleDNS</option>
+                        <option>YandexDNS</option>
+                        <option>CloudflareDNS</option>
+                        <option>Quad9DNS</option>
+                        <option>OpenDNS</option>
+                    </select>
+
+                </div>
+
+                <div><h3></h3></div>
+    
+                <button id="submit" style="width: 100%;">Submit</button>
+
+
+            </div>
+          
+            <div class="panel">
+                <div>
+                    <h3>Result</h3>
+                </div>
+                <textarea id="result" readonly>
+
+
+                </textarea>
+            </div>
+          
+            
+        </div>
+
+        <footer>
+            <p style="text-align: center; margin: 0.35em;">Dresol 0.1-rc1</p>
+        </footer>
+
+       
+	</body>
+    
+    <script>
+
+        
+        let domain = document.getElementById("domain")
+        let type = document.getElementById("type")
+        let server = document.getElementById("server")
+        let result = document.getElementById("result")
+        
+        function getCookie(name) {
+            let matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        if (getCookie("domain")!==undefined){
+            domain.value=getCookie("domain")
+        }
+        if (getCookie("type")!==undefined){
+            type.value=getCookie("type")
+        }
+        if (getCookie("server")!==undefined){
+            server.value=getCookie("server")
+        }
+
+    </script>
+
+    <script src="/static/js/main.js"></script>
+</html>
