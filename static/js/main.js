@@ -36,7 +36,7 @@
                 let i=0
                 for (let el of res){
                     
-                    text.push(`${i}\tTTL\t\t${el.ttl}\t${el.type}\t${el.value}`)
+                    text.push(`${i}\tTTL\t\t${el.ttl}\t${el.type}\t${processText(el.value)}`)
                     i++
                 }
 
@@ -52,6 +52,25 @@
         return typeof obj[Symbol.iterator] === 'function';
         }
 
+         function processText(t){
+            let words = t.split(" ")
+            let words_decoded=[]
+            for (word of words){
+                let nums = [...word.matchAll(/\\(\d{3})/g)]
+                .map(x => Number(x[1]));
+                if (nums.length==0){
+                continue
+                }
+                let bytes = new Uint8Array(nums);
+                words_decoded.push(new TextDecoder("utf-8").decode(bytes));
+            }
+            let i = 0;
+            let result = t.replace(
+                /(?:\\\d{3})+/g,
+                () => words_decoded[i++]
+            );
+            return (result);
+        }
 
         function setCookie(name, value, options = {}) {
 

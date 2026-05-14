@@ -73,6 +73,7 @@ func result_to_json(answer []dns.RR, _type string) ([]byte, error) {
 		}
 		value = varray[4]
 
+
 		block := ResponseBlock{Type: _type, Value: value, TTL: varray[1]}
 
 		result = append(result, block)
@@ -124,4 +125,12 @@ func resolve(domain string, _type string, dns_server string) ([]byte, error) {
 
 	return result_to_json(m1.Answer, _type)
 
+}
+
+func toUtf8(iso8859_1_buf []byte) string {
+	buf := make([]rune, len(iso8859_1_buf))
+	for i, b := range iso8859_1_buf {
+		buf[i] = rune(b)
+	}
+	return string(buf)
 }
