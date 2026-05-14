@@ -51,7 +51,7 @@
         
         return typeof obj[Symbol.iterator] === 'function';
         }
-
+// byte sequenses to utf8
          function processText(t){
             let words = t.split(" ")
             let words_decoded=[]
