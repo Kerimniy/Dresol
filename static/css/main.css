@@ -280,6 +280,9 @@ footer{
     .btn-cont{
         flex-direction: column;
     }
+     body{
+        padding: 0.2rem;
+    }
 }
 @media(max-width:530px){
      .color-input-wrapper{
